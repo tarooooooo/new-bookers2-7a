@@ -30,3 +30,26 @@
       <%= f.submit'Create Book'%>
     </div>
   <% end %>
+  <div>
+    <h2>Books</h2>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th></th>
+        </tr>
+      </thead>
+  <% @books.each do|book| %>
+      <tbody>
+        <tr>
+          <td>画像</td>
+          <td><%= book.title %></td>
+          <td><%= book.opinion %></td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
