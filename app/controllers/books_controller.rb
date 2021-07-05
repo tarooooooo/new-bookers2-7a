@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   def index
    @book = Book.new
    @books = Book.all
+  
   end
 
   def show
@@ -20,7 +21,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    binding.pry
     @book=Book.find(params[:id])
     @model_class_name = ModelClassName.find(params[:id])
   end

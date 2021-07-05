@@ -1,15 +1,43 @@
-<div class="container">
+<h2>User info</h2>
+
+ 
   <div class="row">
-    <div class="col-md-3">
-      <h2>User info</h2>
-      <table class="table">
-        <tbody>
-          
-        </tbody>
-      </table>
-      <div class="row">
-        <
-      </div>
-    </div>
+   <a class="fas fa-user-cog" href=""></a>
   </div>
-</div>
+  <h2>New book</h2>
+  <%= form_with model:@book,local:true do |f| %>
+    <div class="form-group">
+      <label for="book-title">Title</label>
+      <%= f.text_field :title%>
+    </div>
+    <div class="form-group">
+      <label for="book-opinion">Opinion</label>
+      <%= f.text_area :opinion%>
+    </div>
+    <div class="form-group">
+      <%= f.submit'Create Book'%>
+    </div>
+  <% end %>
+  <div>
+    <h2>Books</h2>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th></th>
+        </tr>
+      </thead>
+  <% @user_book.each do|book| %>
+      <tbody>
+        <tr>
+          <td>画像</td>
+          <td><%= book.title %></td>
+          <td><%= book.opinion %></td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
