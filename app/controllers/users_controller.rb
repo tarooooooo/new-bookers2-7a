@@ -2,19 +2,24 @@ class UsersController < ApplicationController
   def show
     @book = Book.new
     @user_book = Book.where(user_id:params[:id])
+    @user = User.find(params[:id])
   end
 
+
+
   def index
+    @users = User.all
+
   end
 
   def edit
-    @user = User.new
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.new(user_params)
-    @user.save
-    redirect_to books_path
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(current_user.id)
   end
 
   private

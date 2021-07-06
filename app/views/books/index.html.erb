@@ -1,43 +1,30 @@
-<h2>User info</h2>
+ <h2>Books</h2>
+ <table class="table">
 
- 
-  <div class="row">
-   <a class="fas fa-user-cog" href=""></a>
-  </div>
-  <h2>New book</h2>
-  <%= form_with model:@book,local:true do |f| %>
-    <div class="form-group">
-      <label for="book-title">Title</label>
-      <%= f.text_field :title%>
-    </div>
-    <div class="form-group">
-      <label for="book-opinion">Opinion</label>
-      <%= f.text_area :opinion%>
-    </div>
-    <div class="form-group">
-      <%= f.submit'Create Book'%>
-    </div>
-  <% end %>
-  <div>
-    <h2>Books</h2>
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Title</th>
-          <th>Opinion</th>
-          <th></th>
-        </tr>
-      </thead>
-  <% @books.each do|book| %>
-      <tbody>
-        <tr>
-          <td>画像</td>
-          <td><%= book.title %></td>
-          <td><%= book.opinion %></td>
-         
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <% end %>
+ <therd>
+   <tr>
+     <th></th>
+     <th>Title</th>
+     <th>Opinion</th>
+     <th colspan=3></th>
+   </tr>
+ </therd>
+
+ <% @books.each do |book| %>
+ <tbody>
+  <tr>
+   <th>
+   <%= link_to user_path(book.user.id) do %>
+   <%= attachment_image_tag book.user, :image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg"%>
+   <% end %>
+   </th>
+   <th>
+    <%= link_to book_path(book.id) do %>
+    <%= book.title %>
+    <% end %>
+    </th>
+   <th><%= book.opinion %></th>
+  </tr>
+ </tbody>
+ <% end %>
+ </table>
