@@ -10,19 +10,64 @@
   </head>
 
   <body>
-     <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+    <nav class="navibar">
+      <div class="container">
+        <%= link_to root_path do %>
+        <h1 class ="navibar-brand">Bookers</h1>
+        <% end %>
+      </div>
+      <div class="navibar">
+      <ul class= "navibar-nav">
+       <% if user_signed_in? %>
+        <li>
+          <%= link_to user_path(current_user.id) do %>
+          <p><i class="fas fa-home"></i>Home</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to users_path do %>
+          <p><i class="fas fa-users"></i>Users</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to books_path do %>
+          <p><i class="fas fa-book-open"></i>Books</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <p><i class="fas fa-sign-out-alt"></i>logout</p>
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to root_path do %>
+          <p><i class="fas fa-home"></i>Home</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to homes_about_path do %>
+          <p><i class="fas fa-link"></i>About</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_registration_path do %>
+          <p><i class="fas fa-user-plus"></i>sign up</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path do %>
+          <p><i class="fas fa-sign-in-alt"></i>login</p>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </nav>
 
     <%= yield %>
   </body>
+  <foorer>
+    <p>CopyRight Infratop.inc</p>
+  </foorer>
 </html>
