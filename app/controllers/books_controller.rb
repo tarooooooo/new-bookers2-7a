@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  before_action :baria_book , only: [:edit]
  
   def create
     @user = current_user
@@ -49,7 +49,14 @@ class BooksController < ApplicationController
    def book_params
      params.require(:book).permit(:title,:opinion)
    end
-    def book_update_params
+   def book_update_params
      params.require(:book).permit(:title,:opinion)
    end
+   
+   def baria_book
+     unless Book.find(params[:id]).user_id == current_user.id
+     redirect_to books_path
+     end
+   end
+   
 end
