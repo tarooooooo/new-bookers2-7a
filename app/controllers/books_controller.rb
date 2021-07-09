@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     if @book.save
         redirect_to book_path(@book.id), notice:'You have created book successfully.'
     else
-       render"index",notice:"sss"
+       render"index"
     end
   end
 

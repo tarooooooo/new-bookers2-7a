@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :baria_user, only: [:edit]
+  
   def show
     @book = Book.new
     @user_book = Book.where(user_id:params[:id])
@@ -28,5 +30,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name,:image,:introduction)
+  end
+  
+  def baria_user
+    unless User.find(params[:id]).id == current_user.id
+    redirect_to user_path(current_user)
+    end
+    
   end
 end
