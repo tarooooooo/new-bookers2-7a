@@ -1,4 +1,7 @@
 # README
+# DMM WEBCAMPコンテンツ【アプリケーションを完成させよう２】
+DMM WEBCAMPの学習コンテンツアプリケーションを完成させよう２の研修課題です。
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
