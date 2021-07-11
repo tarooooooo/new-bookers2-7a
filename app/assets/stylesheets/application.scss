@@ -16,6 +16,16 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+header{
+    hight: 216px;
+}
+ul {
+    margin:0px;
+    padding:0px;
+}
+li{
+    height: 40px;
+}
 
 div.field, div.actions {
     margin-bottom: 10px;
