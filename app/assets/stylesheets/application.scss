@@ -16,26 +16,31 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-header{
-    hight: 216px;
-}
-ul {
-    margin:0px;
-    padding:0px;
-}
-li{
-    height: 40px;
-}
 
-div.field, div.actions {
-    margin-bottom: 10px;
+* {
+	margin: 0;
+	padding: 0;
 }
-.form_group {
-    margin-bottom: 1rem;
-}
-#notice {
-    color: green;
-}
-#error_explanation {
-    color: red;
-}
+// header{
+//     hight: 216px;
+// }
+// ul {
+//     margin:0px;
+//     padding:0px;
+// }
+// li{
+//     height: 40px;
+// }
+
+// div.field, div.actions {
+//     margin-bottom: 10px;
+// }
+// .form_group {
+//     margin-bottom: 1rem;
+// }
+// #notice {
+//     color: green;
+// }
+// #error_explanation {
+//     color: red;
+// }

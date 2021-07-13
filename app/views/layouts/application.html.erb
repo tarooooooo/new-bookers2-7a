@@ -17,20 +17,20 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class= "navbar-nav ml-auto">
-          　　<% if user_signed_in? %>
+              <% if user_signed_in? %>
                 <li>
-                  <%= link_to user_path(current_user.id) ,class: 'fas fa-home nav-link text-light' do %>Home<% end %>
+                  <%= link_to "Home", user_path(current_user.id) ,class: 'fas fa-home nav-link text-light' %>
                 </li>
                 <li>
-                  <%= link_to users_path ,class: 'fas fa-users nav-link text-light' do %>Users<% end %>
+                  <%= link_to "User" , users_path ,class: 'fas fa-users nav-link text-light' %>
                 </li>
                 <li>
-                  <%= link_to books_path , class: 'fas fa-book-open nav-link text-light' do %>Books<% end %>
+                  <%= link_to "Books" , books_path , class: 'fas fa-book-open nav-link text-light' %>
                 </li>
                 <li>
-                  <%= link_to destroy_user_session_path, class: 'fas fa-sign-out-alt nav-link text-light' , method: :delete do %>logout<% end %>
+                  <%= link_to "logout" , destroy_user_session_path, class: 'fas fa-sign-out-alt nav-link text-light' , method: :delete %>
                 </li>
               <% else %>
                 <li>
@@ -49,22 +49,22 @@
             </ul>
           </div>
         </div>
-    　</nav>
-  　</header>
-  　<main>
+      </nav>
+    </header>
+    <main>
       <p id="notice">
-  　     <%= flash[:notice] %>
-  　   </p>
+         <%= flash[:notice] %>
+      </p>
       <%= yield %>
-  　</main>
-  　<foorer>
+    </main>
+    <footer>
       <div class = "container mt-5">
         <div class ="row">
           <div class="mx-auto">
-          　<p>CopyRight Infratop.inc</p>
+          <p>CopyRight Infratop.inc</p>
           </div>
         </div>
       </div>
-  　</foorer>
+    </footer>
   </body>
 </html>
