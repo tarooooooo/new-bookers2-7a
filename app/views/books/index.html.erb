@@ -20,28 +20,44 @@
           <th>Title</th>
           <th>Opinion</th>
           <th colspan=3></th>
+          <th colspan=3></th>
+          <th colspan=3></th>
+
         </tr>
       </therd>
       <% @books.each do |book| %>
         <tbody>
           <tr>
-            
+
             <td>
             <%= link_to user_path(book.user.id) do %>
             <%= attachment_image_tag book.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg"%>
             <% end %>
             </td>
-            
+
             <td>
               <%= link_to book_path(book.id) do %>
               <%= book.title %>
               <% end %>
             </td>
-            
+
             <td>
               <%= book.body %>
             </td>
-            
+
+            <% if current_user.liked_by?(book.id) %>
+              <td>
+                <%= link_to "#{book.favorites.count}",book_favorites_path(book), {method: :delete , class:"fas fa-heart"}  %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to "#{book.favorites.count}", book_favorites_path(book), {method: :post , class:"far fa-heart"} %>
+              </td>
+            <% end %>
+            <td>
+              コメント数
+            </td>
+
           </tr>
         </tbody>
       <% end %>

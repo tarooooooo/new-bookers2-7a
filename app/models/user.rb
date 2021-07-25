@@ -5,9 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
-  
+  has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
+
   attachment :profile_image
-  
+
   validates :name, presence: true, length: {minimum: 2,maximum: 20} , uniqueness: true
   validates :introduction, length: { maximum: 50 }
+
+  def liked_by?(book_id)
+    self.favorites.where(book_id: book_id).exists?
+  end
+  
 end
