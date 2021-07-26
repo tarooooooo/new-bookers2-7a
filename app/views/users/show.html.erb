@@ -1,6 +1,17 @@
 <div class ="container px-5 px-sm-0">
   <div class="row">
     <%= render'list',user:@user,book:@book %>
+
+    <p><%=link_to "フォロー", follows_user_path(@user.id) %></p>
+    <p><%=link_to "フォロワー", followers_user_path(@user.id) %></p>
+    <% if current_user != @user %>
+      <% if @user.followed_by?(current_user) %>
+        <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+      <% else %>
+        <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+      <% end %>
+    <% end %>
+
     <div class ="col-md-8 offset-md-1">
 
       <h2>Books</h2>
@@ -44,7 +55,7 @@
                <%= link_to "#{book.favorites.count}", book_favorites_path(book), {method: :post , class:"far fa-heart"} %>
              </td>
            <% end %>
-           <td>
+           <td class ='example'>
              <span>コメント数：<%= book.book_comments.count %></span>
            </td>
            </tr>

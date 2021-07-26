@@ -19,10 +19,7 @@
           <th></th>
           <th>Title</th>
           <th>Opinion</th>
-          <th colspan=3></th>
-          <th colspan=3></th>
-          <th colspan=3></th>
-
+          <th colspan=6></th>
         </tr>
       </therd>
       <% @books.each do |book| %>
@@ -46,15 +43,15 @@
             </td>
 
             <% if current_user.liked_by?(book.id) %>
-              <td>
+              <td  class ="example">
                 <%= link_to "#{book.favorites.count}",book_favorites_path(book), {method: :delete , class:"fas fa-heart"}  %>
               </td>
             <% else %>
-              <td>
+              <td  class ="example">
                 <%= link_to "#{book.favorites.count}", book_favorites_path(book), {method: :post , class:"far fa-heart"} %>
               </td>
             <% end %>
-            <td>
+            <td class ='example'>
               <span>コメント数：<%=book.book_comments.count %></span>
             </td>
 

@@ -14,7 +14,7 @@ class BookCommentsController < ApplicationController
       book_comment.destroy
       redirect_back(fallback_location: root_path)
     else
-      rend_back(fallback_location: root_path)
+      rendirect_back(fallback_location: root_path)
     end
   end
 
