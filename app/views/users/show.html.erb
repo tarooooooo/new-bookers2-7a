@@ -35,8 +35,8 @@
            <td>
              <%= book.body %>
            </td>
-           <td id ="Like-<%= book.id%>">
-             <%= render partial: "book", locals: { book: book }%>
+           <td id ="Favorites-buttons<%= book.id%>">
+             <%= render partial: "favorites/like", locals: { book: book }%>
            </td>
            <td class ='example'>
              <span>コメント数：<%= book.book_comments.count %></span>

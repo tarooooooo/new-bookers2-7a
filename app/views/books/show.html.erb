@@ -32,15 +32,10 @@
               <%= @user_book.body %>
             </td>
 
-            <% if current_user.liked_by?(@user_book.id) %>
-              <td>
-                <%= link_to "#{@user_book.favorites.count}",book_favorites_path(@user_book), {method: :delete , class:"fas fa-heart"}  %>
-              </td>
-            <% else %>
-              <td>
-                <%= link_to "#{@user_book.favorites.count}", book_favorites_path(@user_book), {method: :post , class:"far fa-heart"} %>
-              </td>
-            <% end %>
+            <td id ="Favorites-buttons<%= @user_book.id %>">
+             <%= render partial: "favorites/like", locals: { book: @user_book }%>
+           </td>
+
             <td class ='example'>
               <span>コメント数：<%= @user_book.book_comments.count %></span>
             </td>
