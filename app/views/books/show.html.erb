@@ -36,8 +36,8 @@
              <%= render partial: "favorites/like", locals: { book: @user_book }%>
            </td>
 
-            <td class ='example'>
-              <span>コメント数：<%= @user_book.book_comments.count %></span>
+            <td id = "comments-count" >
+              <%=render partial: "book_comments/count" , locals: { book: @user_book}%>
             </td>
             <% if @user_book.user == current_user %>
 
