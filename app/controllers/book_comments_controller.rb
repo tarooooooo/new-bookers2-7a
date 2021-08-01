@@ -1,14 +1,10 @@
 class BookCommentsController < ApplicationController
   def create
     @book_comment = current_user.book_comments.new(comment_params)
-    respond_to do |format|
       if @book_comment.save
-        format.html { redirect_back(fallback_location: root_path) }
-        format.js
       else
-        format.html { redirect_back(fallback_location: root_path) }
+        redirect_back(fallback_location: root_path)
       end
-    end
   end
 
   def destroy
