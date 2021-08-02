@@ -3,7 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @book = Book.new
-    @user_book = Book.where(user_id:params[:id])
+    @user_books = Book.where(user_id:params[:id]).includes(:favorited_users).sort{|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    # @user_books = Book.includes(:favorited_users).sort{|a,b| b.favorited_users.size <=> a.favorited_users.size}　
+    #上記を追記すると、Book.allが呼び出されてしまう。なので、user.bookを呼び出してから、並び替えの記述をする。
     @user = User.find(params[:id])
   end
 
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
 
   def follows
     user = User.find(params[:id])
-    @users = user.followedes
+    @users = user.followings
   end
 
   def followers
