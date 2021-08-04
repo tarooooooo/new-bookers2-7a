@@ -12,8 +12,8 @@ class FavoritesController < ApplicationController
     @book = Book.find(params[:book_id])
     favorite = Favorite.find_by(book_id: params[:book_id] ,user_id: current_user.id)
     favorite.destroy
-     @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
-     @user_books = Book.where(user_id:@book.user.id).includes(:favorited_users).sort{|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @user_books = Book.where(user_id:@book.user.id).includes(:favorited_users).sort{|a,b| b.favorited_users.size <=> a.favorited_users.size}
     # redirect_back(fallback_location: root_path)
   end
 end

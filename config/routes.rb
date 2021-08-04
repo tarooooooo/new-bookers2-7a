@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create,:destroy]
   end
   
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create,:show]
+
   get 'search' => "searches#search"
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
